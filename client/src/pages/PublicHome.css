@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+}
+
+.header {
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+    background-color: #57E7DA;
+    height: 85px;
+    width: 100%;
+    /* padding: 10px; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.logo {
+    position: absolute;
+    height: 24vmin; /* Adjust the logo size here */
+    width: auto;
+    z-index: 2;
+    top: -5vmin;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 2.5vmin;
+    right: 10px;
+    z-index: 2;
+}
+
+.title {
+    position: absolute;
+    top: calc(100vh / 10);
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Century', serif;
+    font-size: calc(20px + 4.5vw);
+    z-index: 2;
+}
+
+.play {
+    position: absolute;
+    top: calc(50vh - 15px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.imgbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.center-fit {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
