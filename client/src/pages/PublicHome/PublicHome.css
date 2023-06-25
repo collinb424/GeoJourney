@@ -2,61 +2,66 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    position: relative;
+    height: 100vh;
     overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
     position: relative;
 }
 
 .header {
-    /* display: flex;
+    display: flex;
     justify-content: space-between;
-    align-items: center; */
-    background-color: #57E7DA;
-    height: 85px;
+    align-items: flex-start;
     width: 100%;
-    /* padding: 10px; */
+    padding: 1.5rem;
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
 }
 
 .logo {
-    position: absolute;
     height: 24vmin; /* Adjust the logo size here */
     width: auto;
-    z-index: 2;
-    top: -5vmin;
+    position: relative;
+    top: -8vmin;
 }
 
 .buttons {
     display: flex;
     gap: 20px;
-    position: absolute;
-    top: 2.5vmin;
-    right: 10px;
-    z-index: 2;
+    margin-top: 4px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
+    padding-top: 11vh;
 }
 
 .title {
-    position: absolute;
-    top: calc(100vh / 10);
-    left: 50%;
-    transform: translateX(-50%);
     font-family: 'Century', serif;
     font-size: calc(20px + 4.5vw);
-    z-index: 2;
+    text-align: center;
+    margin-bottom: 2vmin;
 }
 
 .play {
-    position: absolute;
-    top: calc(50vh - 15px);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+    margin-top: 8vmin;
 }
 
 .imgbox {
@@ -65,8 +70,7 @@ body {
     left: 0;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
-    z-index: 0;
+    z-index: -1;
 }
 
 .center-fit {

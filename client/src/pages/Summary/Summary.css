@@ -1,0 +1,81 @@
+.summary-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../../assets/images/SummaryBackground.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.summary-logo {
+    position: absolute;
+    height: 24vmin;
+    top: -2vmin;
+    left: 2rem;
+}
+
+.summary-title {
+    font-family: 'Inter', sans-serif;
+    font-size: calc(15px + 4vw);
+    text-align: center;
+    font-weight: bolder;
+    color: #0E3239;
+    width: 100%;
+    position: absolute;
+    top: 6vh; /* Adjust this to move the title up or down */
+}
+
+.summary-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    height: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 1.2em; /* Font size of the table */
+    font-weight: bold; /* Boldness of the table text */
+    color: red; /* Text color */
+}
+
+th {
+    background-color: #0E3239;
+    color: white;
+    text-transform: none;
+}
+
+td, th {
+    padding: 5px;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #D1D9D3;
+    color: #079073;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: white;
+    color: #0E3239;
+}
+
+.bold-cell {
+    font-weight: bold;
+}

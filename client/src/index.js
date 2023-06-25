@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import theme from "./assets/theme/theme";
+import { LoadScript } from '@react-google-maps/api';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ChakraProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+  <ChakraProvider theme={theme}>
+    <App />
   </ChakraProvider>
 );
 

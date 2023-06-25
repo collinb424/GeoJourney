@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 140vh;
+    width: 100vw;
+    position: relative;
+}
+
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.user-title-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 600px; /* Adjust this to the maximum width you want for your title */
+    align-self: start;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+.user-title {
+    line-height: 1; /* Adjust this to control the line spacing */
+    text-align: center;
+    font-family: 'Century', serif;
+    font-size: calc(20px + 4.5vw);
+    margin-bottom: 2vmin;
+}
+
+/* .title {
+    flex-grow: 1;
+    text-align: center;
+    margin-top: -25px;
+} */
+
+.user-logo {
+    height: 24vmin;
+    width: auto;
+    position: relative;
+    top: -8vmin;
+}
+
+.user-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 4px;
+}
+
+.user-imgbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+}
+
+.user-center-fit {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.user-modes {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* flex-grow: 1; */
+    padding: 5vh 3rem;
+    background-color: #0E3239;
+    color: #fff;
+    width: 100%;
+    height: 75vh;
+    position: relative;
+    top: 70vh;
+}
+
+.user-modes-title {
+    margin-bottom: 2vmin;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: calc(15px + 1.8vw)
+}
+
+.user-cards {
+    display: flex;
+    /* justify-content: space-around; */
+    margin-top: 2vmin;
+    gap: 15vw;
+}
