@@ -52,7 +52,11 @@ function GuessMap({ onGuessSubmit }) {
       <PrimaryButton
         text="Submit"
         bg="#4F9B3F"
-        handleClick={() => onGuessSubmit(marker)}
+        handleClick={() => {
+          if (marker !== null) {
+            onGuessSubmit(marker);
+          }
+        }}
       />
     </div>
   );

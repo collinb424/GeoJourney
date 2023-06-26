@@ -5,7 +5,7 @@ import { score } from '../../scripts/score';
 import PrimaryButton from '../../components/PrimaryButton';
 import './Result.css';
 
-function Result({ guess, actual, onNext }) {
+function Result({ guess, actual, onNext, location }) {
   const markerGuess = useMemo(
     () => ({ lat: guess.lat, lng: guess.lng }),
     [guess],
@@ -27,7 +27,7 @@ function Result({ guess, actual, onNext }) {
   const mapContainerStyle = { height: '80vh', width: '100%' };
 
   const dist = distance(guess.lat, guess.lng, actual[0], actual[1]);
-  const scr = score(dist);
+  const scr = score(dist, location);
 
   return (
     <div className="result-container">

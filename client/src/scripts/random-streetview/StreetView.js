@@ -30,14 +30,32 @@ export default class StreetView extends EventEmitter {
         this.google = google;
         this.cacheKey = cacheKey;
         this.enableCaching = enableCaching;
-        this.smallestContainingTile = this.polygonToSmallestContainingTile(polygon);
-        this.polygon = polygon;
-        let area = 0;
-        if (polygon)
-            polygon.getPaths().forEach(path => {
+
+        // Create a google.maps.Polygon object if polygon parameter is an array
+        if (polygon) {
+            let paths = polygon;
+            this.polygon = new google.maps.Polygon({
+                paths: paths,
+                strokeColor: "#00ff7a",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#00ff7a",
+                fillOpacity: 0.35,
+                draggable: false,
+                clickable: false,
+            });
+            let area = 0;
+            this.polygon.getPaths().forEach(path => {
                 area += this.google.maps.geometry.spherical.computeArea(path);
             });
-        this.area = area;
+            this.area = area;
+        } else {
+            console.log('else block')
+            this.polygon = false;
+            this.area = 1;
+        }
+
+        this.smallestContainingTile = this.polygonToSmallestContainingTile(this.polygon);
     }
 
     async randomValidLocation({

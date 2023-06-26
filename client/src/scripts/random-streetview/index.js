@@ -41,8 +41,10 @@ class RandomStreetView extends EventEmitter {
             await Google.wait();
             google = Google;
         }
+        let paths;
         if (polygon instanceof Array) {
-            let paths = polygon.map(path => path.map(([lat, lng]) => new google.maps.LatLng(lat, lng)));
+            console.log(polygon)
+            paths = polygon.map(([lat, lng]) => new google.maps.LatLng(lat, lng));
             polygon = new google.maps.Polygon({
                 paths: paths,
                 strokeColor: "#00ff7a",
@@ -60,7 +62,7 @@ class RandomStreetView extends EventEmitter {
             polygon.getPaths().forEach(p => p.forEach(c => cacheKey += c.lat().toString() + c.lng()));
         }
 
-        this._streetView.setParameters(polygon, enableCaching, cacheKey, google);
+        this._streetView.setParameters(paths, enableCaching, cacheKey, google);
         this.endZoom = endZoom;
         this.type = type;
         this.distribution = distribution;

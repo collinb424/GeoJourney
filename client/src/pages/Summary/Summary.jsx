@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './Summary.css';
 import LargerButton from '../../components/LargerButton';
 import logo from '../../assets/images/Logo.png';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import AuthContext from '../../contexts/AuthContext';
+import PrimaryButton from '../../components/PrimaryButton';
 
-const Summary = ({ results }) => {
+const Summary = ({ results, handleNewGame }) => {
   const totalScore = results.reduce((total, result) => total + result.scr, 0);
   const { location } = useParams();
+  const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem('jwt-token');
@@ -23,16 +27,34 @@ const Summary = ({ results }) => {
       totalScore: totalScore,
     };
 
-    axios.post('/game/finish', gameData, config).catch((err) => {
-      console.error(err);
-    });
+    axios
+      .post('http://localhost:4000/game/finish', gameData, config)
+      .catch((err) => {
+        console.error(err);
+      });
   }, [totalScore, location]);
+
+  const handleLogOut = () => {
+    localStorage.removeItem('jwt-token');
+    authContext.setIsAuthenticated(false);
+    navigate('/');
+  };
 
   return (
     <div className="summary-container">
       <header className="summary-header">
-        <img src={logo} alt="Logo" className="summary-logo" />
+        <div className="summary-whole-logo">
+          <img className="summary-logo" src={logo} alt="Logo" />
+          <h6 className="summary-logo-title">GeoJourney</h6>
+        </div>
         <h1 className="summary-title">Results</h1>
+        <div className="summary-logout">
+          <PrimaryButton
+            className="summary-logout"
+            text="Log out"
+            handleClick={handleLogOut}
+          />
+        </div>
       </header>
       <div className="summary-content">
         <table>
@@ -58,7 +80,7 @@ const Summary = ({ results }) => {
             </tr>
           </tbody>
         </table>
-        <LargerButton text="Play" bg="#0E3239" />
+        <LargerButton text="Play" bg="#0E3239" handleClick={handleNewGame} />
       </div>
     </div>
   );

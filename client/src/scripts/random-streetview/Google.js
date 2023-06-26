@@ -16,7 +16,8 @@ class Google extends EventEmitter {
     init() {
         this.initCalled = true;
         loadGoogleMapsApi({
-            libraries: ['geometry']
+            libraries: ['geometry'],
+            key: 'AIzaSyDWjoWhrhM7CgKJD7hgQQFpswLFek0Nnb0'
         }).then(googleMaps => {
             this.maps = googleMaps;
             this.emit('maps');

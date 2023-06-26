@@ -18,11 +18,24 @@
     left: 0;
 }
 
+.summary-whole-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    margin-left: 2vw;
+    margin-top: -2vh;
+}
+
+.summary-logo-title {
+    font-family: Century, serif;
+    font-size: calc(12px + 1.25vw);
+    margin-left: 0.75vw;
+}
+
 .summary-logo {
-    position: absolute;
-    height: 24vmin;
-    top: -2vmin;
-    left: 2rem;
+    height: 12vw;
 }
 
 .summary-title {
@@ -33,7 +46,13 @@
     color: #0E3239;
     width: 100%;
     position: absolute;
-    top: 6vh; /* Adjust this to move the title up or down */
+    top: 6vh;
+}
+
+.summary-logout {
+    position: absolute;
+    top: 6vh;
+    right: 2rem;
 }
 
 .summary-content {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Button,
   Modal,
@@ -15,17 +15,23 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../../contexts/AuthContext';
 
 function LoginModal({ isOpen, onClose }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('/login', { username, password });
+      const response = await axios.post('http://localhost:4000/user/login', {
+        username,
+        password,
+      });
       localStorage.setItem('jwt-token', response.data.token);
+      authContext.setIsAuthenticated(true);
       navigate('/user');
     } catch (err) {
       setError('Invalid username or password. Please try again.');

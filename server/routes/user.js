@@ -95,27 +95,33 @@ router.post(
     console.log('backend');
 
     if (!errors.isEmpty()) {
+      console.log('made it here')
       return res.status(400).json({
         errors: errors.array()
       });
     }
 
+    
     const { username, password } = req.body;
     try {
       let user = await User.findOne({
         username
       });
-      if (!user)
+      if (!user) {
+        console.log('later further')
         return res.status(400).json({
           message: "Invalid credentials."
         });
-
+      }
+      console.log('now here')
       const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch)
+      if (!isMatch) {
+        console.log('later further')
+        
         return res.status(400).json({
           message: "Invalid credentials."
         });
-
+      }
       const payload = {
         user: {
           id: user.id
@@ -141,6 +147,7 @@ router.post(
         message: "Server Error."
       });
     }
+    console.log('finished')
   }
 );
 

@@ -11,10 +11,11 @@ import Summary from './pages/Summary/Summary.jsx'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
   useEffect(() => {
     const token = localStorage.getItem('jwt-token');
     if (token) {
-      axios.get('/user/validate-token', { 
+      axios.get('http://localhost:4000/user/validate-token', { 
         headers: {
           'token': token
         }
@@ -37,7 +38,7 @@ function App() {
         <Routes>
           <Route path="/user" element={<Private component={UserHome} />} />
           <Route path="/" element={<PublicHome />} />
-          <Route path="/game" element={<Private component={Game} />}/>
+          <Route path="/game/:location" element={<Private component={Game} />}/>
         </Routes>
       </Router>
     </AuthContext.Provider>

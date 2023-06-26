@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '@chakra-ui/react';
 
-function LargerButton({ text, className, bg }) {
+function LargerButton({ text, className, bg, handleClick }) {
   return (
     <Button
       className="play"
@@ -13,6 +13,7 @@ function LargerButton({ text, className, bg }) {
       fontSize="calc(10px + 1.75vw)" // adjust as needed
       width="calc(50px + 10vw)" // adjust as needed
       height="calc(20px + 3vw)"
+      onClick={handleClick}
     >
       {text}
     </Button>

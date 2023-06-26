@@ -7,11 +7,12 @@ import { useParams } from 'react-router-dom';
 import arizonaData from '../../assets/data/arizona.json';
 import Result from '../Result/Result';
 import Summary from '../Summary/Summary';
+import { Box, Flex, Text } from '@chakra-ui/react';
 
 const Game = () => {
   // console.log('Game component rendered');
   const { location } = useParams();
-  const [lcn, setLcn] = useState(null);
+  const [currentLocation, setCurrentLocation] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [guess, setGuess] = useState(null);
   const [phase, setPhase] = useState('game');
@@ -25,42 +26,60 @@ const Game = () => {
   const handleNextRound = (dist, scr) => {
     console.log('next round');
     setResults([...results, { dist, scr }]);
-    setCurrentIndex(currentIndex + 1); // go to the next round
-    setGuess(null); // reset guess
-    setPhase('game'); // return to game phase
-    setLcn(null);
+    setCurrentIndex(currentIndex + 1);
+    setGuess(null);
+    setPhase('game');
+    setCurrentLocation(null);
+  };
+
+  const handleNewGame = () => {
+    setResults([]);
+    setCurrentIndex(0);
+    setGuess(null);
+    setPhase('game');
+    setCurrentLocation(null);
   };
 
   useEffect(() => {
     const fetchData = async (location) => {
-      let loc;
+      let randomLocation;
       switch (location) {
         case 'World':
           console.log('before');
-          loc = await randomStreetView.getRandomLocation();
-          setLcn(loc);
+          randomLocation = await randomStreetView.getRandomLocation();
+          setCurrentLocation(randomLocation);
           console.log('here');
           break;
         case 'Arizona':
-          // if (currentIndex === 5) {
-          //   // const parsedData = JSON.parse(arizonaData);
-          //   const arizonaBoundaryCoordinates =
-          //     arizonaData.geometries[0].coordinates[0];
-          //   console.log(arizonaBoundaryCoordinates);
-          //   const transformedCoordinates = arizonaBoundaryCoordinates.map(
-          //     (coordinates) => {
-          //       if (Array.isArray(coordinates)) {
-          //         return coordinates.map(([lng, lat]) => [lat, lng]);
-          //       }
-          //     },
-          //   );
-          //   console.log('done');
-          //   await randomStreetView.setParameters({
-          //     polygon: transformedCoordinates,
-          //   });
-          //   locs = await randomStreetView.getRandomLocations(5);
-          //   setLocations(locs);
-          // }
+          // const arizonaPolygon = arizonaData.geometries[0].coordinates[0];
+          // console.log(arizonaPolygon);
+
+          // const flattenedArizonaPolygon = arizonaPolygon.reduce(
+          //   (acc, polygon) => acc.concat(polygon[0]),
+          //   [],
+          // );
+
+          // const arizonaPolygon = [
+          //   [
+          //     [31.33239, -109.050076],
+          //     [32.261521, -113.959223],
+          //     [36.999884, -114.050162],
+          //     [36.997788, -109.05874],
+          //   ],
+          // ];
+          await randomStreetView.setParameters({
+            polygon: [
+              [31.33239, -109.050076],
+              [32.261521, -113.959223],
+              [36.999884, -114.050162],
+              [36.997788, -109.05874],
+            ],
+          });
+
+          console.log('before generating');
+          randomLocation = await randomStreetView.getRandomLocation();
+          console.log('Random location is: ', randomLocation);
+          setCurrentLocation(randomLocation);
           break;
         default:
           break;
@@ -72,10 +91,39 @@ const Game = () => {
   console.log(location);
   return (
     <LoadScript googleMapsApiKey="AIzaSyDWjoWhrhM7CgKJD7hgQQFpswLFek0Nnb0">
-      {console.log(lcn)}
-      {phase === 'game' && currentIndex < 5 && lcn && (
+      {console.log(currentLocation)}
+      {phase === 'game' && currentIndex < 5 && currentLocation && (
         <>
-          <StreetView coordinates={lcn} />
+          <Flex
+            // direction="row"
+            position="absolute"
+            top="10px"
+            right="10px"
+            spacing={4}
+            zIndex={2}
+            gap="25px"
+          >
+            <Box
+              backgroundColor="customGreen.500"
+              borderRadius="lg"
+              padding={3}
+            >
+              <Text fontSize="2xl" color="white">
+                Round: {currentIndex + 1}/5
+              </Text>
+            </Box>
+            <Box
+              backgroundColor="customGreen.500"
+              borderRadius="lg"
+              padding={3}
+            >
+              <Text fontSize="2xl" color="white">
+                Total Score:{' '}
+                {results.reduce((acc, result) => acc + result.scr, 0)}
+              </Text>
+            </Box>
+          </Flex>
+          <StreetView coordinates={currentLocation} />
           <div
             style={{ position: 'absolute', bottom: 15, right: 10, zIndex: 1 }}
           >
@@ -84,9 +132,16 @@ const Game = () => {
         </>
       )}
       {phase === 'result' && currentIndex < 5 && (
-        <Result guess={guess} actual={lcn} onNext={handleNextRound} />
+        <Result
+          guess={guess}
+          actual={currentLocation}
+          onNext={handleNextRound}
+          location={location}
+        />
       )}
-      {currentIndex === 5 && <Summary results={results} />}
+      {currentIndex === 5 && (
+        <Summary results={results} handleNewGame={handleNewGame} />
+      )}
     </LoadScript>
   );
 };

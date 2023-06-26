@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Button,
   Modal,
@@ -11,10 +11,33 @@ import {
   FormControl,
   FormLabel,
   Input,
-  useDisclosure
+  useDisclosure,
 } from '@chakra-ui/react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../../contexts/AuthContext';
 
 function SignupModal({ isOpen, onClose }) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
+
+  const handleSignup = async () => {
+    try {
+      const response = await axios.post('http://localhost:4000/user/signup', {
+        username,
+        password,
+      });
+      localStorage.setItem('jwt-token', response.data.token);
+      authContext.setIsAuthenticated(true);
+      navigate('/user');
+    } catch (err) {
+      setError('Invalid username or password. Please try again.');
+    }
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -24,12 +47,24 @@ function SignupModal({ isOpen, onClose }) {
         <ModalBody>
           <FormControl>
             <FormLabel>Username</FormLabel>
-            <Input color="black" placeholder="username" />
+            <Input
+              color="black"
+              placeholder="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </FormControl>
           <FormControl mt={5}>
             <FormLabel>Password</FormLabel>
-            <Input color="black" placeholder="password" type="password" />
+            <Input
+              color="black"
+              placeholder="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </FormControl>
+          {error && <div style={{ color: 'red' }}>{error}</div>}
         </ModalBody>
 
         <ModalFooter>
@@ -37,7 +72,7 @@ function SignupModal({ isOpen, onClose }) {
             backgroundColor="newCustomGreen.600"
             color="white"
             mr={3}
-            onClick={onClose}
+            onClick={handleSignup}
           >
             Sign up
           </Button>

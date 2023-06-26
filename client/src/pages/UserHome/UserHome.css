@@ -32,22 +32,54 @@ body {
     left: 0;
 }
 
+.user-whole-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    margin-left: -1vw;
+    margin-top: -52px;
+    /* display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; */
+}
+
+.logo-title {
+    font-family: Century, serif;
+    font-size: calc(10px + 1.25vw);
+    margin-left: 0.3vw;
+    /* margin-left: -15px;
+    margin-top: -15vh; */
+}
+
+.user-logo {
+    height: 24vmin;
+    /* height: 24vmin;
+    width: auto;
+    position: relative;
+    top: -8vmin; */
+}
+
 .user-title-container {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    max-width: 600px; /* Adjust this to the maximum width you want for your title */
+    max-width: 600px;
     align-self: start;
     justify-content: center;
-    margin-top: -10px;
+    margin-top: -3px;
+    padding-left: 30px;
 }
 
 .user-title {
-    line-height: 1; /* Adjust this to control the line spacing */
+    line-height: 1;
     text-align: center;
     font-family: 'Century', serif;
-    font-size: calc(20px + 4.5vw);
+    font-size: calc(12px + 7vmin);
     margin-bottom: 2vmin;
 }
 
@@ -56,13 +88,6 @@ body {
     text-align: center;
     margin-top: -25px;
 } */
-
-.user-logo {
-    height: 24vmin;
-    width: auto;
-    position: relative;
-    top: -8vmin;
-}
 
 .user-buttons {
     display: flex;
@@ -83,7 +108,7 @@ body {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
 }
 
 .user-modes {
@@ -92,13 +117,13 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     /* flex-grow: 1; */
-    padding: 5vh 3rem;
+    padding: 3vh 3rem;
     background-color: #0E3239;
     color: #fff;
     width: 100%;
     height: 75vh;
     position: relative;
-    top: 70vh;
+    top: 66vh;
 }
 
 .user-modes-title {

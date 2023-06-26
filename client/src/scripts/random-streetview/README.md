@@ -1,1 +1,1 @@
-## Code here from https://github.com/RuurdBijlsma/random-streetview
+## The code here is from https://github.com/RuurdBijlsma/random-streetview
