@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from '../contexts/AuthContext';
 
 const JWT_TOKEN = 'jwt-token';
-const API_URL = 'http://localhost:4000/user/signup';
+const API_URL = `${process.env.REACT_APP_API_BASE_URL}/user/signup`;
 
 function SignupModal({ isOpen, onClose }) {
   const [username, setUsername] = useState('');

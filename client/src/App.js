@@ -9,7 +9,7 @@ import axios from 'axios';
 import { Box, Spinner } from '@chakra-ui/react';
 
 const JWT_TOKEN = 'jwt-token';
-const API_URL = 'http://localhost:4000/user/validate-token';
+const API_URL = `${process.env.REACT_APP_API_BASE_URL}/user/validate-token`;
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

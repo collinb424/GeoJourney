@@ -8,7 +8,7 @@ import AuthContext from '../../contexts/AuthContext';
 import PrimaryButton from '../../components/PrimaryButton';
 
 const JWT_TOKEN = 'jwt-token';
-const API_URL = 'http://localhost:4000/game/finish';
+const API_URL = `${process.env.REACT_APP_API_BASE_URL}/game/finish`;
 
 const Summary = ({ results, handleNewGame }) => {
   const totalScore = results.reduce((total, result) => total + result.scr, 0);
