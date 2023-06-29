@@ -16,7 +16,10 @@
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
-  /* border-top: 1px solid #ffffff; */
+}
+
+.card p:last-of-type {
+  margin-bottom: 7px;
 }
 
 #result-map {

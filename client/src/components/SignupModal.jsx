@@ -16,7 +16,10 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../../contexts/AuthContext';
+import AuthContext from '../contexts/AuthContext';
+
+const JWT_TOKEN = 'jwt-token';
+const API_URL = 'http://localhost:4000/user/signup';
 
 function SignupModal({ isOpen, onClose }) {
   const [username, setUsername] = useState('');
@@ -27,11 +30,11 @@ function SignupModal({ isOpen, onClose }) {
 
   const handleSignup = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/user/signup', {
+      const response = await axios.post(API_URL, {
         username,
         password,
       });
-      localStorage.setItem('jwt-token', response.data.token);
+      localStorage.setItem(JWT_TOKEN, response.data.token);
       authContext.setIsAuthenticated(true);
       navigate('/user');
     } catch (err) {
@@ -47,8 +50,7 @@ function SignupModal({ isOpen, onClose }) {
         <ModalCloseButton />
         <ModalBody>
           <Text color="black" mb="1rem">
-            To prevent spam, GeoJourney requires users to sign up. However, it
-            is completely free to play after sign up!
+            GeoJourney is completely free to play after sign up!
           </Text>
           <FormControl>
             <FormLabel>Username</FormLabel>

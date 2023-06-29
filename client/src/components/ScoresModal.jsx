@@ -32,7 +32,6 @@ function ScoresModal({ scores, ...props }) {
                 </tr>
               </thead>
               <tbody>
-                {console.log(scores)}
                 {scores.map((score, index) => (
                   <tr key={index}>
                     <td>{new Date(score.date).toLocaleDateString()}</td>

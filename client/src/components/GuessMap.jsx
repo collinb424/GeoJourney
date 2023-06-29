@@ -1,7 +1,6 @@
 import { GoogleMap, Marker } from '@react-google-maps/api';
 import React, { useState, useMemo } from 'react';
 import PrimaryButton from './PrimaryButton';
-import LargerButton from './LargerButton';
 
 function GuessMap({ onGuessSubmit }) {
   const [marker, setMarker] = useState(null);
@@ -22,7 +21,6 @@ function GuessMap({ onGuessSubmit }) {
       lng: event.latLng.lng(),
     };
     setMarker(newMarker);
-    //onGuess(newMarker);
   };
 
   const mapContainerStyle = isHovered

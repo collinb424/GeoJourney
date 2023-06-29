@@ -1,17 +1,15 @@
 import React, { useEffect, useContext } from 'react';
 import PrimaryButton from '../../components/PrimaryButton';
 import LargerButton from '../../components/LargerButton';
-import AboutModal from '../../components/Modals/AboutModal';
-import LoginModal from '../../components/Modals/LoginModal';
-import SignupModal from '../../components/Modals/SignupModal';
+import AboutModal from '../../components/AboutModal';
+import LoginModal from '../../components/LoginModal';
+import SignupModal from '../../components/SignupModal';
 import background from '../../assets/images/PublicHomeBackground.png';
 import logo from '../../assets/images/Logo.png';
 import './PublicHome.css';
-import { Box, Button, Flex, Image } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/AuthContext';
-import axios from 'axios';
 
 function PublicHome() {
   const navigate = useNavigate();
@@ -22,43 +20,6 @@ function PublicHome() {
       navigate('/user');
     }
   }, [authContext.isAuthenticated, navigate]);
-
-  // useEffect(() => {
-  //   const validateToken = async () => {
-  //     const token = localStorage.getItem('jwt-token');
-  //     if (token) {
-  //       try {
-  //         const response = axios.get(
-  //           'http://localhost:4000/user/validate-token',
-  //           {
-  //             headers: {
-  //               token: token,
-  //             },
-  //           },
-  //         );
-  //         if (response.data) {
-  //           console.log('good');
-  //           authContext.setIsAuthenticated(true);
-  //           navigate('/user');
-  //         } else {
-  //           console.log('not good');
-  //           localStorage.removeItem('jwt-token');
-  //           authContext.setIsAuthenticated(false);
-  //           openLoginModal();
-  //         }
-  //       } catch (error) {
-  //         localStorage.removeItem('jwt-token');
-  //         authContext.setIsAuthenticated(false);
-  //         openLoginModal();
-  //       }
-  //     } else {
-  //       console.log('nothing');
-  //       openLoginModal();
-  //     }
-  //    };
-
-  //   validateToken();
-  // }, []);
 
   const {
     isOpen: aboutModalOpen,

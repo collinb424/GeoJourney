@@ -22,7 +22,6 @@ router.post('/finish', auth, async (req, res) => {
     await score.save();
 
     user.scores.push(score);
-
     await user.save();
 
     return res.status(200).json(score);

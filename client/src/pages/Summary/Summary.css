@@ -31,7 +31,7 @@
 .summary-logo-title {
     font-family: Century, serif;
     font-size: calc(12px + 1.25vw);
-    margin-left: 0.75vw;
+    margin-left: 0.5vw;
 }
 
 .summary-logo {
@@ -46,7 +46,7 @@
     color: #0E3239;
     width: 100%;
     position: absolute;
-    top: 6vh;
+    top: 3vh;
 }
 
 .summary-logout {
@@ -69,9 +69,9 @@ table {
     border-collapse: collapse;
     border-radius: 8px;
     overflow: hidden;
-    font-size: 1.2em; /* Font size of the table */
-    font-weight: bold; /* Boldness of the table text */
-    color: red; /* Text color */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: red;
 }
 
 th {

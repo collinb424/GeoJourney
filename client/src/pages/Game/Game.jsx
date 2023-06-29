@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import randomStreetView from '../../scripts/random-streetview';
 import StreetView from '../../components/StreetView';
-import { LoadScript } from '@react-google-maps/api';
 import GuessMap from '../../components/GuessMap';
 import { useParams } from 'react-router-dom';
-import arizonaData from '../../assets/data/arizona.json';
 import Result from '../Result/Result';
 import Summary from '../Summary/Summary';
 import { Box, Flex, Text } from '@chakra-ui/react';
 
 const Game = () => {
-  // console.log('Game component rendered');
   const { location } = useParams();
   const [currentLocation, setCurrentLocation] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,7 +21,6 @@ const Game = () => {
   };
 
   const handleNextRound = (dist, scr) => {
-    console.log('next round');
     setResults([...results, { dist, scr }]);
     setCurrentIndex(currentIndex + 1);
     setGuess(null);
@@ -41,64 +37,57 @@ const Game = () => {
   };
 
   useEffect(() => {
-    const fetchData = async (location) => {
-      let randomLocation;
+    const fetchData = async () => {
       switch (location) {
         case 'World':
-          console.log('before');
-          await randomStreetView.setParameters({
-            polygon: false,
-          });
-          randomLocation = await randomStreetView.getRandomLocation();
-          setCurrentLocation(randomLocation);
-          console.log('here');
+          await setWorldParameters();
           break;
         case 'Arizona':
-          // const arizonaPolygon = arizonaData.geometries[0].coordinates[0];
-          // console.log(arizonaPolygon);
-
-          // const flattenedArizonaPolygon = arizonaPolygon.reduce(
-          //   (acc, polygon) => acc.concat(polygon[0]),
-          //   [],
-          // );
-
-          // const arizonaPolygon = [
-          //   [
-          //     [31.33239, -109.050076],
-          //     [32.261521, -113.959223],
-          //     [36.999884, -114.050162],
-          //     [36.997788, -109.05874],
-          //   ],
-          // ];
-          await randomStreetView.setParameters({
-            polygon: [
-              [31.33239, -109.050076],
-              [32.261521, -113.959223],
-              [36.999884, -114.050162],
-              [36.997788, -109.05874],
-            ],
-          });
-
-          console.log('before generating');
-          randomLocation = await randomStreetView.getRandomLocation();
-          console.log('Random location is: ', randomLocation);
-          setCurrentLocation(randomLocation);
+          await setArizonaParameters();
           break;
         default:
           break;
       }
     };
-    fetchData(location);
+
+    const setWorldParameters = async () => {
+      await randomStreetView.setParameters({ polygon: false });
+      await getValidLocation();
+    };
+
+    const setArizonaParameters = async () => {
+      await randomStreetView.setParameters({
+        polygon: [
+          [31.33239, -109.050076],
+          [32.261521, -113.959223],
+          [36.999884, -114.050162],
+          [36.997788, -109.05874],
+        ],
+      });
+      await getValidLocation();
+    };
+
+    const getValidLocation = async () => {
+      let isValid = false;
+      while (!isValid) {
+        try {
+          const randomLocation = await randomStreetView.getRandomLocation();
+          setCurrentLocation(randomLocation);
+          isValid = true;
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    };
+
+    fetchData();
   }, [location, currentIndex]);
 
-  console.log(location);
   return (
     <>
-      {console.log(currentLocation)}
       {phase === 'game' && currentIndex < 5 && currentLocation && (
         <>
           <Flex
-            // direction="row"
             position="absolute"
             top="10px"
             right="10px"

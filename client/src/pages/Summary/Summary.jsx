@@ -7,6 +7,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/AuthContext';
 import PrimaryButton from '../../components/PrimaryButton';
 
+const JWT_TOKEN = 'jwt-token';
+const API_URL = 'http://localhost:4000/game/finish';
+
 const Summary = ({ results, handleNewGame }) => {
   const totalScore = results.reduce((total, result) => total + result.scr, 0);
   const { location } = useParams();
@@ -14,28 +17,32 @@ const Summary = ({ results, handleNewGame }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem('jwt-token');
+    const postGameData = async () => {
+      const token = localStorage.getItem(JWT_TOKEN);
 
-    const config = {
-      headers: {
-        token: token,
-      },
-    };
+      const config = {
+        headers: {
+          token: token,
+        },
+      };
 
-    const gameData = {
-      gameMode: location,
-      totalScore: totalScore,
-    };
+      const gameData = {
+        gameMode: location,
+        totalScore: totalScore,
+      };
 
-    axios
-      .post('http://localhost:4000/game/finish', gameData, config)
-      .catch((err) => {
+      try {
+        await axios.post(API_URL, gameData, config);
+      } catch (err) {
         console.error(err);
-      });
+      }
+    };
+
+    postGameData();
   }, [totalScore, location]);
 
   const handleLogOut = () => {
-    localStorage.removeItem('jwt-token');
+    localStorage.removeItem(JWT_TOKEN);
     authContext.setIsAuthenticated(false);
     navigate('/');
   };
@@ -75,8 +82,8 @@ const Summary = ({ results, handleNewGame }) => {
             ))}
             <tr>
               <td></td>
-              <td class="bold-cell">Total Score</td>
-              <td class="bold-cell">{totalScore}</td>
+              <td className="bold-cell">Total Score</td>
+              <td className="bold-cell">{totalScore}</td>
             </tr>
           </tbody>
         </table>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Image, Text, Button } from '@chakra-ui/react';
+import { Box, Image, Text } from '@chakra-ui/react';
 import PrimaryButton from './PrimaryButton';
 import { useNavigate } from 'react-router-dom';
 

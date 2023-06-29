@@ -1,9 +1,5 @@
-import {
-  GoogleMap,
-  LoadScript,
-  StreetViewPanorama,
-} from '@react-google-maps/api';
-import React, { useEffect, useState, useMemo } from 'react';
+import { GoogleMap, StreetViewPanorama } from '@react-google-maps/api';
+import React, { useMemo } from 'react';
 
 function StreetView({ coordinates }) {
   const mapContainerStyle = {

@@ -15,7 +15,10 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../../contexts/AuthContext';
+import AuthContext from '../contexts/AuthContext';
+
+const JWT_TOKEN = 'jwt-token';
+const API_URL = 'http://localhost:4000/user/login';
 
 function LoginModal({ isOpen, onClose }) {
   const [username, setUsername] = useState('');
@@ -26,11 +29,11 @@ function LoginModal({ isOpen, onClose }) {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/user/login', {
+      const response = await axios.post(API_URL, {
         username,
         password,
       });
-      localStorage.setItem('jwt-token', response.data.token);
+      localStorage.setItem(JWT_TOKEN, response.data.token);
       authContext.setIsAuthenticated(true);
       navigate('/user');
     } catch (err) {

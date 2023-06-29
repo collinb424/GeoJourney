@@ -6,35 +6,41 @@ import Game from './pages/Game/Game.jsx';
 import AuthContext from './contexts/AuthContext.js';
 import Private from './routes/Private.jsx';
 import axios from 'axios';
-import { LoadScript } from '@react-google-maps/api';
-import Summary from './pages/Summary/Summary.jsx';
 import { Box, Spinner } from '@chakra-ui/react';
+
+const JWT_TOKEN = 'jwt-token';
+const API_URL = 'http://localhost:4000/user/validate-token';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
-    const token = localStorage.getItem('jwt-token');
-    if (token) {
-      axios.get('http://localhost:4000/user/validate-token', { 
-        headers: {
-          'token': token
+    const validateToken = async () => {
+      const token = localStorage.getItem(JWT_TOKEN);
+      if (token) {
+        try {
+          const response = await axios.get(API_URL, { 
+            headers: {
+              'token': token
+            }
+          });
+          if (response.data) {
+            setIsAuthenticated(true);
+          } else {
+            localStorage.removeItem(JWT_TOKEN);
+            setIsAuthenticated(false);
+          }
+        } catch (error) {
+          console.log(error.message);
+        } finally {
+          setLoading(false);
         }
-      })
-      .then(response => {
-        if (response.data) {
-          setIsAuthenticated(true);
-        } else {
-          localStorage.removeItem('jwt-token');
-          setIsAuthenticated(false);
-        }
-      })
-      .catch(err => console.log(err))
-      .finally(() => setLoading(false));
-    } else {
-      setLoading(false);
-    }
+      } else {
+        setLoading(false);
+      }
+    };
+    validateToken();
   }, []);
 
   if (loading) {
@@ -56,8 +62,8 @@ function App() {
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       <Router>
         <Routes>
-          <Route path="/user" element={<Private component={UserHome} />} />
           <Route path="/" element={<PublicHome />} />
+          <Route path="/user" element={<Private component={UserHome} />} />
           <Route path="/game/:location" element={<Private component={Game} />}/>
         </Routes>
       </Router>

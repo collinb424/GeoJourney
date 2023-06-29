@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import PrimaryButton from '../../components/PrimaryButton';
-import ScoresModal from '../../components/Modals/ScoresModal';
-import background from '../../assets/images/TestUserHomeBackground.png';
+import ScoresModal from '../../components/ScoresModal';
+import background from '../../assets/images/UserHomeBackground.png';
 import './UserHome.css';
 import logo from '../../assets/images/Logo.png';
 import CustomCard from '../../components/CustomCard';
@@ -9,8 +9,11 @@ import Earth from '../../assets/images/Earth.png';
 import Arizona from '../../assets/images/Arizona.png';
 import axios from 'axios';
 import { useDisclosure } from '@chakra-ui/react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/AuthContext';
+
+const JWT_TOKEN = 'jwt-token';
+const API_URL = 'http://localhost:4000/user/scores';
 
 function UserHome() {
   const [scores, setScores] = useState([]);
@@ -20,26 +23,27 @@ function UserHome() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem('jwt-token');
-    const config = {
-      headers: {
-        token: token,
-      },
-    };
+    const fetchScores = async () => {
+      const token = localStorage.getItem(JWT_TOKEN);
+      const config = {
+        headers: {
+          token: token,
+        },
+      };
 
-    axios
-      .get('http://localhost:4000/user/scores', config)
-      .then((response) => {
+      try {
+        const response = await axios.get(API_URL, config);
         setUsername(response.data.username);
         setScores(response.data.scores.reverse());
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    fetchScores();
   }, []);
 
   const handleLogOut = () => {
-    localStorage.removeItem('jwt-token');
+    localStorage.removeItem(JWT_TOKEN);
     authContext.setIsAuthenticated(false);
     navigate('/');
   };
@@ -73,11 +77,7 @@ function UserHome() {
           <CustomCard image={Arizona} altText="Arizona" title="Arizona" />
         </div>
       </div>
-      <ScoresModal
-        isOpen={isOpen}
-        onClose={onClose}
-        scores={scores.reverse()}
-      />
+      <ScoresModal isOpen={isOpen} onClose={onClose} scores={scores} />
     </div>
   );
 }
