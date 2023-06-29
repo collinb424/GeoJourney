@@ -23,44 +23,32 @@ body {
 .user-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center; /* Change from flex-start to center */
     width: 100%;
-    padding: 1.5rem;
+    padding: 1vw 3vw 0vw 3vw;
     box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative; /* Change from absolute to relative */
 }
 
 .user-whole-logo {
     display: flex;
-    flex-direction: row;
     align-items: center;
     text-decoration: none;
     color: inherit;
-    margin-left: -1vw;
-    margin-top: -52px;
-    /* display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-decoration: none;
-    color: inherit; */
+    margin-top: -2vw;
+    margin-left: -2vw;
 }
+
 
 .logo-title {
     font-family: Century, serif;
-    font-size: calc(10px + 1.25vw);
-    margin-left: 0.3vw;
-    /* margin-left: -15px;
-    margin-top: -15vh; */
+    font-size: clamp(1vw, 2.25vw, 3.25vw); /* Adjust clamp() function */
+    margin-left: 0.59vw; /* Adjust value */
 }
 
 .user-logo {
-    height: 24vmin;
-    /* height: 24vmin;
-    width: auto;
-    position: relative;
-    top: -8vmin; */
+    height: auto;
+    width: clamp(50px, 12vw, 150px); /* Adjust clamp() function */
 }
 
 .user-title-container {
@@ -71,7 +59,7 @@ body {
     max-width: 600px;
     align-self: start;
     justify-content: center;
-    margin-top: -3px;
+    margin-top: 2vw;
     padding-left: 30px;
 }
 
@@ -79,7 +67,7 @@ body {
     line-height: 1;
     text-align: center;
     font-family: 'Century', serif;
-    font-size: calc(12px + 7vmin);
+    font-size: clamp(2vw, 4vw, 8vw); /* Adjust clamp() function */
     margin-bottom: 2vmin;
 }
 
@@ -92,7 +80,8 @@ body {
 .user-buttons {
     display: flex;
     gap: 20px;
-    margin-top: 4px;
+    /* margin-top: 2px; */
+    margin-top: -1vw;
 }
 
 .user-imgbox {
@@ -123,7 +112,7 @@ body {
     width: 100%;
     height: 75vh;
     position: relative;
-    top: 66vh;
+    top: 45.7vh;
 }
 
 .user-modes-title {
@@ -139,3 +128,18 @@ body {
     margin-top: 2vmin;
     gap: 15vw;
 }
+
+
+@media (max-width: 600px) {
+    .logo-title {
+      font-size: clamp(0.5vw, 1.5w, 3vw); /* Adjust clamp() function */
+    }
+  
+    .user-logo {
+      width: clamp(30px, 7vw, 130px); /* Adjust clamp() function */
+    }
+  
+    .user-title {
+      font-size: clamp(1.2vw, 3.5vw, 4vw); /* Adjust clamp() function */
+    }
+  }

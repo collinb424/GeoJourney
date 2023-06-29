@@ -11,6 +11,7 @@ function GuessMap({ onGuessSubmit }) {
   const options = useMemo(
     () => ({
       disableDefaultUI: true,
+      clickableIcons: false,
     }),
     [],
   );

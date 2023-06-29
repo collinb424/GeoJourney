@@ -32,7 +32,7 @@ body {
 }
 
 .logo {
-    height: 24vmin; /* Adjust the logo size here */
+    height: 24vmin;
     width: auto;
     position: relative;
     top: -8vmin;
