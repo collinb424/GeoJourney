@@ -46,6 +46,9 @@ const Game = () => {
       switch (location) {
         case 'World':
           console.log('before');
+          await randomStreetView.setParameters({
+            polygon: false,
+          });
           randomLocation = await randomStreetView.getRandomLocation();
           setCurrentLocation(randomLocation);
           console.log('here');
@@ -90,7 +93,7 @@ const Game = () => {
 
   console.log(location);
   return (
-    <LoadScript googleMapsApiKey="AIzaSyDWjoWhrhM7CgKJD7hgQQFpswLFek0Nnb0">
+    <>
       {console.log(currentLocation)}
       {phase === 'game' && currentIndex < 5 && currentLocation && (
         <>
@@ -142,7 +145,7 @@ const Game = () => {
       {currentIndex === 5 && (
         <Summary results={results} handleNewGame={handleNewGame} />
       )}
-    </LoadScript>
+    </>
   );
 };
 

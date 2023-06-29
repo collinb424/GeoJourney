@@ -11,6 +11,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Text,
   useDisclosure,
 } from '@chakra-ui/react';
 import axios from 'axios';
@@ -45,6 +46,10 @@ function SignupModal({ isOpen, onClose }) {
         <ModalHeader>Sign up</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
+          <Text color="black" mb="1rem">
+            To prevent spam, GeoJourney requires users to sign up. However, it
+            is completely free to play after sign up!
+          </Text>
           <FormControl>
             <FormLabel>Username</FormLabel>
             <Input

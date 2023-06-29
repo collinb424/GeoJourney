@@ -40,11 +40,15 @@ function Result({ guess, actual, onNext, location }) {
       >
         <Marker
           position={markerGuess}
-          icon={{ fillColor: 'red', strokeColor: 'red' }}
+          icon={{
+            url: `http://maps.google.com/mapfiles/ms/icons/red-dot.png`,
+          }}
         />
         <Marker
           position={markerActual}
-          icon={{ fillColor: 'green', strokeColor: 'green' }}
+          icon={{
+            url: `http://maps.google.com/mapfiles/ms/icons/green-dot.png`,
+          }}
         />
       </GoogleMap>
       <div className="card">

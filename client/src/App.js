@@ -7,10 +7,12 @@ import AuthContext from './contexts/AuthContext.js';
 import Private from './routes/Private.jsx';
 import axios from 'axios';
 import { LoadScript } from '@react-google-maps/api';
-import Summary from './pages/Summary/Summary.jsx'
+import Summary from './pages/Summary/Summary.jsx';
+import { Box, Spinner } from '@chakra-ui/react';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     const token = localStorage.getItem('jwt-token');
@@ -25,11 +27,29 @@ function App() {
           setIsAuthenticated(true);
         } else {
           localStorage.removeItem('jwt-token');
+          setIsAuthenticated(false);
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false));
+    } else {
+      setLoading(false);
     }
   }, []);
+
+  if (loading) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        width="100vw"
+        height="100vh"
+      >
+        <Spinner size='xl'/>
+      </Box>
+    );
+  }
 
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import PrimaryButton from '../../components/PrimaryButton';
 import LargerButton from '../../components/LargerButton';
 import AboutModal from '../../components/Modals/AboutModal';
@@ -9,8 +9,57 @@ import logo from '../../assets/images/Logo.png';
 import './PublicHome.css';
 import { Box, Button, Flex, Image } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../../contexts/AuthContext';
+import axios from 'axios';
 
 function PublicHome() {
+  const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    if (authContext.isAuthenticated) {
+      navigate('/user');
+    }
+  }, [authContext.isAuthenticated, navigate]);
+
+  // useEffect(() => {
+  //   const validateToken = async () => {
+  //     const token = localStorage.getItem('jwt-token');
+  //     if (token) {
+  //       try {
+  //         const response = axios.get(
+  //           'http://localhost:4000/user/validate-token',
+  //           {
+  //             headers: {
+  //               token: token,
+  //             },
+  //           },
+  //         );
+  //         if (response.data) {
+  //           console.log('good');
+  //           authContext.setIsAuthenticated(true);
+  //           navigate('/user');
+  //         } else {
+  //           console.log('not good');
+  //           localStorage.removeItem('jwt-token');
+  //           authContext.setIsAuthenticated(false);
+  //           openLoginModal();
+  //         }
+  //       } catch (error) {
+  //         localStorage.removeItem('jwt-token');
+  //         authContext.setIsAuthenticated(false);
+  //         openLoginModal();
+  //       }
+  //     } else {
+  //       console.log('nothing');
+  //       openLoginModal();
+  //     }
+  //    };
+
+  //   validateToken();
+  // }, []);
+
   const {
     isOpen: aboutModalOpen,
     onOpen: openAboutModal,
@@ -39,7 +88,11 @@ function PublicHome() {
       </div>
       <div className="main-content">
         <h1 className="title">GeoJourney</h1>
-        <LargerButton className="play" text="Play" />
+        <LargerButton
+          className="play"
+          text="Play"
+          handleClick={openSignupModal}
+        />
       </div>
       <div className="imgbox">
         <img

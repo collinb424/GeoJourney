@@ -2,6 +2,7 @@ function score(miles, location) {
     let maxDistance;
     if (location === 'Arizona') {
         maxDistance = 375;
+        if (miles > maxDistance) return 0;
     }
     else {
         maxDistance = 7926;

@@ -28,7 +28,7 @@ function ScoresModal({ scores, ...props }) {
                 <tr>
                   <th>Date</th>
                   <th>Game Mode</th>
-                  <th>Score</th>
+                  <th>Total Score</th>
                 </tr>
               </thead>
               <tbody>

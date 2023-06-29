@@ -62,7 +62,7 @@ class RandomStreetView extends EventEmitter {
             polygon.getPaths().forEach(p => p.forEach(c => cacheKey += c.lat().toString() + c.lng()));
         }
 
-        this._streetView.setParameters(paths, enableCaching, cacheKey, google);
+        this._streetView.setParameters(polygon, enableCaching, cacheKey, google);
         this.endZoom = endZoom;
         this.type = type;
         this.distribution = distribution;
