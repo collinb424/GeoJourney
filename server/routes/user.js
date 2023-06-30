@@ -99,7 +99,6 @@ router.post(
       });
     }
 
-    console.log('before mongodb')
     const { username, password } = req.body;
     try {
       let user = await User.findOne({
@@ -110,7 +109,6 @@ router.post(
           message: "Invalid credentials."
         });
       }
-      console.log('after mongodb and before bcrypt compare')
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
         
@@ -123,7 +121,6 @@ router.post(
           id: user.id
         }
       };
-      console.log('after bcrypt and before jwt.sign')
       jwt.sign(
         payload,
         process.env.JWT_SECRET,
@@ -143,7 +140,6 @@ router.post(
         message: "Server Error."
       });
     }
-    console.log('after jwt.sign')
   }
 );
 
