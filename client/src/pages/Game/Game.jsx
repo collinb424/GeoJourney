@@ -28,14 +28,6 @@ const Game = () => {
     setCurrentLocation(null);
   };
 
-  const handleNewGame = () => {
-    setResults([]);
-    setCurrentIndex(0);
-    setGuess(null);
-    setPhase('game');
-    setCurrentLocation(null);
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       switch (location) {

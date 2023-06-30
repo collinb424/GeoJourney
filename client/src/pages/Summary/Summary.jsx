@@ -10,7 +10,7 @@ import PrimaryButton from '../../components/PrimaryButton';
 const JWT_TOKEN = 'jwt-token';
 const API_URL = `${process.env.REACT_APP_API_BASE_URL}/game/finish`;
 
-const Summary = ({ results, handleNewGame }) => {
+const Summary = ({ results }) => {
   const totalScore = results.reduce((total, result) => total + result.scr, 0);
   const { location } = useParams();
   const authContext = useContext(AuthContext);
@@ -87,7 +87,11 @@ const Summary = ({ results, handleNewGame }) => {
             </tr>
           </tbody>
         </table>
-        <LargerButton text="Play" bg="#0E3239" handleClick={handleNewGame} />
+        <LargerButton
+          text="Home"
+          bg="#0E3239"
+          handleClick={() => navigate('/user')}
+        />
       </div>
     </div>
   );
