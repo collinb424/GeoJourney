@@ -1,9 +1,11 @@
 # GeoJourney
 Welcome to GeoJourney!
 
-GeoJourney is an exciting geography game where you'll be transported to random corners of the world via Google Street View. With each game, you'll be dropped somewhere unexpected—it could be the buzzing streets of Tokyo, the tranquil fjords of Norway, or a remote highway in the Sonoran Desert (if you play our Arizona game mode). Your mission? Guess where you are! Use the interactive map to drop a pin at the location you think you've been placed.
+GeoJourney is an exciting geography-based game where you'll be transported to random corners of the world via Google Street View, similar to the popular game GeoGuessr. With each game, you'll be dropped somewhere unexpected—it could be the buzzing streets of Tokyo, the tranquil fjords of Norway, or a remote highway in the Australian Outback. Your mission? Guess where you are! Use the interactive map to drop a pin at the location you think you've been placed. 
 
-**Try it out for yourself:** https://geojourney.onrender.com/
+Also be sure to check out our Arizona game mode, where you'll explore the diverse landscapes of the Grand Canyon state. GeoJourney will keep track of your overall scores for both the World and Arizona game mode, giving you the chance to see how you improve over time.
+
+**Start your GeoJourney now:** https://geojourney.onrender.com/
 
 
 ## Technologies/Tools/Libraries Used
@@ -12,8 +14,8 @@ GeoJourney is an exciting geography game where you'll be transported to random c
 - Express
 - MongoDB
 - Google Maps API
-- random-streetview
 - @react-google-maps/api
+- random-streetview
 - Midjourney
 - Figma
 - JSON Web Tokens
@@ -42,7 +44,9 @@ $ npm install
 $ cd ../server/
 $ npm install
 ```
-Now, create a .env file in the root of both client/ and server/
+
+### .env files
+We now need to create a .env file in the root of both client/ and server/
 
 For the .env file in client/ you will need to put:
 - REACT_APP_GOOGLE_MAPS_API_KEY=[key], where you should replace [key] with your Google Maps API Key, which you can find directions for getting [here](https://developers.google.com/maps/documentation/javascript/get-api-key).
@@ -62,3 +66,6 @@ $ node index.js
 ```
 $ cd ../client/
 $ npm start
+```
+
+Now you should be all good to go to run GeoJourney locally!
