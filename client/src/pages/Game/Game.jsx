@@ -123,9 +123,7 @@ const Game = () => {
           location={location}
         />
       )}
-      {currentIndex === 5 && (
-        <Summary results={results} handleNewGame={handleNewGame} />
-      )}
+      {currentIndex === 5 && <Summary results={results} />}
     </>
   );
 };

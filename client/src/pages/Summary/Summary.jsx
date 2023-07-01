@@ -90,7 +90,7 @@ const Summary = ({ results }) => {
         <LargerButton
           text="Home"
           bg="#0E3239"
-          handleClick={() => navigate('/user')}
+          handleClick={() => navigate('/')}
         />
       </div>
     </div>
