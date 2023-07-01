@@ -76,7 +76,7 @@ const Summary = ({ results }) => {
             {results.map((result, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{result.dist}</td>
+                <td>{result.dist} mi</td>
                 <td>{result.scr}</td>
               </tr>
             ))}
