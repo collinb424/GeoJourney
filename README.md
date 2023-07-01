@@ -7,6 +7,29 @@ Also be sure to check out our Arizona game mode, where you'll explore the divers
 
 **Start your GeoJourney now:** https://geojourney.onrender.com/
 
+## GeoJourney Home Screen
+<img width="960" alt="Home" src="https://github.com/collinb424/GeoJourney/assets/92958582/9cfa3445-03d5-4680-8d57-19fa7876d2c6">
+
+## GeoJourney Home Screen for Logged In Users
+<img width="960" alt="UserHome" src="https://github.com/collinb424/GeoJourney/assets/92958582/d2f01e5c-e35e-4c09-9ddd-e42e7938af0c">
+
+## Current Game Modes
+<img width="959" alt="GameModes" src="https://github.com/collinb424/GeoJourney/assets/92958582/52569f50-d492-45ab-812d-466396644ba4">
+
+## In Game
+<img width="960" alt="InGame" src="https://github.com/collinb424/GeoJourney/assets/92958582/6ac8ae1b-5f64-44bd-8379-7f08d3417b3f">
+
+## Result
+<img width="1006" alt="Result" src="https://github.com/collinb424/GeoJourney/assets/92958582/bca9bfc6-823a-4f36-85f4-3ee9b0063fc9">
+
+## Game Summary
+
+
+
+
+
+
+
 
 ## Technologies/Tools/Libraries Used
 - React
