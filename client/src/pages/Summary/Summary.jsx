@@ -82,7 +82,7 @@ const Summary = ({ results }) => {
             ))}
             <tr>
               <td></td>
-              <td className="bold-cell">Total Score</td>
+              <td className="bold-cell">Total Score:</td>
               <td className="bold-cell">{totalScore}</td>
             </tr>
           </tbody>
