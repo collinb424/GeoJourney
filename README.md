@@ -23,6 +23,11 @@ Also be sure to check out our Arizona game mode, where you'll explore the divers
 <img width="1006" alt="Result" src="https://github.com/collinb424/GeoJourney/assets/92958582/bca9bfc6-823a-4f36-85f4-3ee9b0063fc9">
 
 ## Game Summary
+<img width="960" alt="GameSummary" src="https://github.com/collinb424/GeoJourney/assets/92958582/c615017a-16dd-4a6f-96c6-77f70f775d39">
+
+## Past Scores
+<img width="1005" alt="PastScores" src="https://github.com/collinb424/GeoJourney/assets/92958582/30611abd-49d1-464f-819e-db517c1725e3">
+
 
 
 
