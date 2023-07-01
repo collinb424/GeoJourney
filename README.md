@@ -3,7 +3,7 @@ Welcome to GeoJourney!
 
 GeoJourney is an exciting geography-based game where you'll be transported to random corners of the world via Google Street View, similar to the popular game GeoGuessr. With each game, you'll be dropped somewhere unexpected—it could be the buzzing streets of Tokyo, the tranquil fjords of Norway, or a remote highway in the Australian Outback. Your mission? Guess where you are! Use the interactive map to drop a pin at the location you think you've been placed. 
 
-Also be sure to check out our Arizona game mode, where you'll explore the diverse landscapes of the Grand Canyon state. GeoJourney will keep track of your overall scores for both the World and Arizona game mode, giving you the chance to see how you improve over time.
+But that's not all! Be sure to check out our Arizona game mode, where you'll explore the diverse landscapes of the Grand Canyon state. And to see how your geo-guessing skills are progressing over time, GeoJourney will also keep track of your past scores for both the World and Arizona game mode.
 
 **Start your GeoJourney now:** https://geojourney.onrender.com/
 
