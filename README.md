@@ -46,7 +46,7 @@ But that's not all! Be sure to check out our Arizona game mode, where you'll exp
 - random-streetview
 - Midjourney
 - Figma
-- JSON Web Tokens
+- JSON Web Tokens (JWT)
 - bcrypt
 - Mongoose
 - Axios

@@ -39,9 +39,11 @@ function AboutModal({ isOpen, onClose }) {
             </Text>
             <br />
             <Text color="black">
-              Don't miss our Arizona game mode where you'll explore the diverse
-              landscapes of the Grand Canyon state. Be sure to stay tuned for
-              more game modes coming soon!
+              But that's not all! Be sure to check out our Arizona game mode,
+              where you'll explore the diverse landscapes of the Grand Canyon
+              state. And to see how your geo-guessing skills are progressing
+              over time, GeoJourney will also keep track of your past scores for
+              both the World and Arizona game mode.
             </Text>
             <br />
             <Text color="black">
