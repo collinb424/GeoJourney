@@ -8,25 +8,25 @@ But that's not all! Be sure to check out our Arizona game mode, where you'll exp
 **Start your GeoJourney now:** https://geojourney.onrender.com/
 
 ## GeoJourney Home Screen
-<img width="960" alt="Home" src="https://github.com/collinb424/GeoJourney/assets/92958582/9cfa3445-03d5-4680-8d57-19fa7876d2c6">
+<img width="960" alt="Home" src="https://raw.githubusercontent.com/collinb424/GeoJourney/master/assets/Home.png">
 
 ## GeoJourney Home Screen for Logged In Users
-<img width="960" alt="UserHome" src="https://github.com/collinb424/GeoJourney/assets/92958582/d2f01e5c-e35e-4c09-9ddd-e42e7938af0c">
+<img width="960" alt="UserHome" src="https://raw.githubusercontent.com/collinb424/GeoJourney/master/assets/UserHome.png">
 
 ## Current Game Modes
-<img width="959" alt="GameModes" src="https://github.com/collinb424/GeoJourney/assets/92958582/52569f50-d492-45ab-812d-466396644ba4">
+<img width="959" alt="GameModes" src="https://raw.githubusercontent.com/collinb424/GeoJourney/master/assets/GameModes.png">
 
 ## In Game
-<img width="960" alt="InGame" src="https://github.com/collinb424/GeoJourney/assets/92958582/6ac8ae1b-5f64-44bd-8379-7f08d3417b3f">
+<img width="960" alt="InGame" src="https://raw.githubusercontent.com/collinb424/GeoJourney/master/assets/InGame.png">
 
 ## Result
-<img width="1006" alt="Result" src="https://github.com/collinb424/GeoJourney/assets/92958582/bca9bfc6-823a-4f36-85f4-3ee9b0063fc9">
+<img width="1006" alt="Result" src="https://raw.githubusercontent.com/collinb424/GeoJourney/master/assets/Result.png">
 
 ## Game Summary
-<img width="960" alt="GameSummary" src="https://github.com/collinb424/GeoJourney/assets/92958582/c615017a-16dd-4a6f-96c6-77f70f775d39">
+<img width="960" alt="GameSummary" src="https://raw.githubusercontent.com/collinb424/GeoJourney/master/assets/GameSummary.png">
 
 ## Past Scores
-<img width="1005" alt="PastScores" src="https://github.com/collinb424/GeoJourney/assets/92958582/30611abd-49d1-464f-819e-db517c1725e3">
+<img width="1005" alt="PastScores" src="https://raw.githubusercontent.com/collinb424/GeoJourney/master/assets/PastScores.png">
 
 
 
