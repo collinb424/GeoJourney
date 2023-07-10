@@ -40,7 +40,7 @@
 
 .summary-title {
     font-family: 'Inter', sans-serif;
-    font-size: calc(15px + 4vw);
+    font-size: calc(15px + 3.75vw);
     text-align: center;
     font-weight: bolder;
     color: #0E3239;
