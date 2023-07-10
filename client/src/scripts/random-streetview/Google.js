@@ -1,4 +1,3 @@
-// import loadGoogleMapsApi from 'load-google-maps-api'
 import EventEmitter from "events";
 
 class Google extends EventEmitter {
@@ -19,13 +18,6 @@ class Google extends EventEmitter {
             this.maps = window.google.maps;
             this.emit('maps');
         }
-        // loadGoogleMapsApi({
-        //     libraries: ['geometry'],
-        //     key: 'AIzaSyDWjoWhrhM7CgKJD7hgQQFpswLFek0Nnb0'
-        // }).then(googleMaps => {
-        //     this.maps = googleMaps;
-        //     this.emit('maps');
-        // });
     }
 
     async wait() {
